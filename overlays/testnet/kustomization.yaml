@@ -1,4 +1,4 @@
-namespace: dandelion-tn-production
+namespace: dandelion-testnet
 #namePrefix: ptn0-
 commonLabels:
   environment: production
@@ -25,6 +25,11 @@ resources:
 - resources/ingress.yaml
 
 patches:
+# FIXME: ugly hack to inject postgres read-only user
+- path: patches/postgres-ha-secret.yaml
+  target:
+    kind: Secret
+    name: init0-postgresql-ha-postgresql
 - path: patches/genesis-image.yaml
   target:
     kind: Deployment
@@ -32,11 +37,11 @@ patches:
 # cardano-db-sync
 - path: patches/cardano-db-sync-deployment-env.yaml
   target:
-    kind: Deployment
+    kind: StatefulSet
     name: cardano-db-sync
 - path: patches/cardano-db-sync-deployment-image.yaml
   target:
-    kind: Deployment
+    kind: StatefulSet
     name: cardano-db-sync
 # cardano-node
 - path: patches/cardano-node-configmap.yaml
@@ -60,4 +65,18 @@ patches:
   target:
     kind: Deployment
     name: cardano-rosetta
-
+# cardano-submit-api
+- path: patches/cardano-submit-api-deployment-env.yaml
+  target:
+    kind: Deployment
+    name: cardano-submit-api
+# cardano-explorer-api
+- path: patches/cardano-explorer-api-deployment-env.yaml
+  target:
+    kind: Deployment
+    name: cardano-explorer-api
+# ogmios
+- path: patches/ogmios-deployment-env.yaml
+  target:
+    kind: Deployment
+    name: ogmios

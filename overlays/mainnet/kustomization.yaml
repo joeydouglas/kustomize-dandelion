@@ -1,5 +1,5 @@
-namespace: dandelion-mn-production
-#namePrefix: ptn0-
+namespace: dandelion-mainnet
+#namePrefix: mn-
 commonLabels:
   environment: production
   cardano_network: mainnet
@@ -32,11 +32,11 @@ patches:
 # cardano-db-sync
 - path: patches/cardano-db-sync-deployment-env.yaml
   target:
-    kind: Deployment
+    kind: StatefulSet
     name: cardano-db-sync
 - path: patches/cardano-db-sync-deployment-image.yaml
   target:
-    kind: Deployment
+    kind: StatefulSet
     name: cardano-db-sync
 # cardano-node
 - path: patches/cardano-node-configmap.yaml
