@@ -28,7 +28,7 @@ spec:
           name: node-db
       containers:
       - name: cardano-node
-        command: ["bash", "-c", "export HOME=/nonexistent; source $HOME/.baids/baids && set -x; ${NETWORK}-cnode-run-as-${CNODE_ROLE}"]
+        command: ["bash", "-c", "export HOME=/nonexistent; source $HOME/.baids/baids && set -x; ${NETWORK}-cnode-run-as-${CNODE_ROLE} +RTS -N2 --disable-delayed-os-memory-return -T -I0 -A16m"]
         env:
         - name: NETWORK
           value: iohk-mn
