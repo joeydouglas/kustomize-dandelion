@@ -39,7 +39,7 @@ spec:
         - name: LOG_LEVEL
           value: "Debug"
         command: ["sh", "-c", "ogmios --node-socket ${NODE_SOCKET_PATH} --host ${LISTEN_HOST} --port ${LISTEN_PORT} --log-level ${LOG_LEVEL}"]
-        image: repsistance/ogmios:v3.0.0-03c1110
+        image: ktorz/ogmios:v3.0.0
         imagePullPolicy: Always
         ports:
         - containerPort: 1337
