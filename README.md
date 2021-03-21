@@ -3,6 +3,7 @@
 * Kubernetes. For local k8s development environment, we encourage you to use [k3s]/[k3d] lightweight k8s distro.
 * [kubectl]
 * [Kustomize]
+* [helm]
 
 # Local deployment
 
@@ -25,7 +26,6 @@ kubectl get pods -A
 OVERLAY=testnet
 OUTPUT_FILE=overlays/${OVERLAY}/output.yaml # this will contain the whole deploy manifest
 kustomize build \
-  --enable-alpha-plugins \
   overlays/${OVERLAY} > overlays/${OVERLAY}/output.yaml
 ```
 
@@ -113,3 +113,4 @@ kubectl delete ns ${NAMESPACE}
 [k3s]: https://k3s.io
 [kapp]: https://github.com/vmware-tanzu/carvel-kapp
 [traefik]: https://traefik.io/traefik/
+[helm]: https://helm.sh/docs/intro/install/
