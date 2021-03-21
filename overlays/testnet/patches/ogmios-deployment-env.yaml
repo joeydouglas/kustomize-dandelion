@@ -1,0 +1,13 @@
+- op: replace
+  path: /spec/template/spec/containers/0/env
+  value:
+    - name: OGMIOS_NETWORK
+      value: testnet
+    - name: LISTEN_HOST
+      value: 0.0.0.0
+    - name: LISTEN_PORT
+      value: "1337"
+    - name: NODE_SOCKET_PATH
+      value: /node-ipc/node.socket
+    - name: LOG_LEVEL
+      value: Debug
