@@ -14,3 +14,12 @@ data:
     {
       "rcmorano:CHANGEME": [""]
     }
+  fixme.sql: |
+    CREATE DATABASE cdbs;
+    CREATE ROLE postgrest_ro;
+    GRANT CONNECT ON DATABASE cdbs TO postgrest_ro;
+    GRANT SELECT ON ALL TABLES IN SCHEMA public TO postgrest_ro;
+    GRANT USAGE ON SCHEMA public TO postgrest_ro;
+    ALTER ROLE postgrest_ro WITH login;
+    ALTER USER postgrest_ro WITH PASSWORD 'CHANGEME';
+    GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA PUBLIC TO postgrest_ro;
