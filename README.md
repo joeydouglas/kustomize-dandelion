@@ -50,7 +50,7 @@ kapp deploy -c \
   --file overlays/${OVERLAY}/output.yaml
 ```
 
-# Usage
+## Usage
 
 Given that everything is listening on `localhost` we need to specify `Host` headers for the requests to be properly routed by the `Ingress` (on k3d, [traefik] by default).
 If you prefer, you could fake these hostnames to point to `127.0.0.1` on your `/etc/hosts` (linux/darwin) file so you don't need to specify them for each request.
@@ -80,7 +80,26 @@ curl -kL \
 
 # Operations
 
-* Start from the scratch:
+## External database access
+
+If you want to explore the db from outside the cluster (GUI tools, et al), you can expose postgres port locally:
+```
+NAMESPACE=dandelion-testnet
+# get read-only user/pass
+PGUSER=$(kubectl get configmap/common-env \
+  -n ${NAMESPACE} \
+  --template='{{ index .data "POSTGREST_USER_RO" }}')
+PGPASSWORD=$(kubectl get secret/init0-postgresql-ha-postgresql \
+  -n ${NAMESPACE} \
+  --template='{{ index .data "postgrest-ro-password" }}' | base64 -d)
+echo "User: ${PGUSER} Pass: ${PGPASSWORD}"
+# expose port
+kubectl port-forward -n dandelion-testnet init0-postgresql-ha-postgresql-0 5432:5432
+```
+
+## Start from the scratch:
+
+* Destroy namespace
 ```
 NAMESPACE=dandelion-testnet
 kubectl delete ns ${NAMESPACE}
