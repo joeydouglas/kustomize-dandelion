@@ -47,7 +47,7 @@ spec:
               key: POSTGRES_DB
         image: diogob/postgres-websockets
         command: ['sh', '-c', 'PGWS_DB_URI="postgres://${POSTGRES_USER}:${POSTGRES_PASS}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}" postgres-websockets']
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         name: postgres-ws
         ports:
         - containerPort: 3000

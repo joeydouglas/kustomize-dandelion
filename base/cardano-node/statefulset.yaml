@@ -20,7 +20,7 @@ spec:
       initContainers:
       - name: remove-lost-n-found
         image: busybox
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         command: ["sh", "-c", "rm -rf /data/db/lost+found"]
         resources: {}
         volumeMounts:
@@ -43,7 +43,7 @@ spec:
         - name: CNODE_CONFIG_FILE
           value: /configmap/config.json
         image: repsistance/cardano-node:iohk-mn-passive-1.25.1-1
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         resources: {}
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File

@@ -20,7 +20,7 @@ spec:
         - name: NETWORK
           value: mainnet
         image: inputoutput/cardano-submit-api:3.1.2
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8090
         resources: {}

@@ -51,7 +51,7 @@ spec:
         - containerPort: 3000
         image: postgrest/postgrest:v7.0.1
         command: ["sh", "-c", "PGRST_DB_URI=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}; postgrest /etc/postgrest.conf"]
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         resources: {}
         volumeMounts:
         - name: common-env

@@ -84,7 +84,7 @@ spec:
               key: postgresql-password
         image: repsistance/cardano-db-sync:8.0.0
         #command: ["sh", "-c", "while true; do sleep 6969; done"]
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         resources: {}
         volumeMounts:
         - name: node-ipc

@@ -18,7 +18,7 @@ spec:
       - name: configure
         command: ["bash", "/configmap/initContainer-entrypoint"]
         image: repsistance/cardano-node:iohk-mn-passive-1.25.1-1
-        imagePullPolicy: "Always"
+        imagePullPolicy: IfNotPresent
         volumeMounts:
         - name: cardano-graphql-config
           mountPath: /config
@@ -56,7 +56,7 @@ spec:
           value: /ipc/node.socket
         image: inputoutput/cardano-graphql:3.2.0
         #command: ["sh", "-c", "while true; do sleep 6969; done"]
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         name: cardano-graphql
         ports:
         - containerPort: 3100
