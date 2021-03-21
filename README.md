@@ -78,6 +78,15 @@ curl -kL \
      'https://localhost/'
 ```
 
+# Operations
+
+* Start from the scratch:
+```
+NAMESPACE=dandelion-testnet
+kubectl delete ns ${NAMESPACE}
+```
+* Just [deploy again :)](#deploy-k8s-manifests)
+
 [docker]: https://docs.docker.com/engine/install/
 [kustomize]: https://kustomize.io
 [kubectl]: https://kubernetes.io/es/docs/tasks/tools/install-kubectl
