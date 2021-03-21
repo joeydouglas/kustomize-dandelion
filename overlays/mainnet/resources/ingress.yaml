@@ -1,8 +1,6 @@
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  annotations:
-    kubernetes.io/ingress.class: nginx
   name: cardano-explorer-api
 spec:
   rules:
@@ -23,8 +21,6 @@ spec:
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  annotations:
-    kubernetes.io/ingress.class: nginx
   name: cardano-submit-api
 spec:
   rules:
@@ -45,8 +41,6 @@ spec:
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  annotations:
-    kubernetes.io/ingress.class: nginx
   name: cardano-graphql-api
 spec:
   rules:
@@ -67,8 +61,6 @@ spec:
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  annotations:
-    kubernetes.io/ingress.class: nginx
   name: chisel-api
 spec:
   rules:
@@ -89,10 +81,6 @@ spec:
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  annotations:
-    kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/websocket-services: ogmios
-    nginx.org/websocket-services: ogmios
   name: ogmios-api
 spec:
   rules:
@@ -113,10 +101,6 @@ spec:
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  annotations:
-    kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/websocket-services: postgrest
-    nginx.org/websocket-services: postgrest
   name: postgrest-api
 spec:
   rules:
@@ -137,8 +121,6 @@ spec:
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  annotations:
-    kubernetes.io/ingress.class: nginx
   name: rosetta-api
 spec:
   rules:
@@ -159,8 +141,6 @@ spec:
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  annotations:
-    kubernetes.io/ingress.class: nginx
   name: postgresws-api
 spec:
   rules:
