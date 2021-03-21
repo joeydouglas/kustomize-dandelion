@@ -43,6 +43,7 @@ kubectl apply -n ${NAMESPACE} -f overlays/${OVERLAY}/output.yaml
 OVERLAY=testnet
 NAMESPACE=dandelion-${OVERLAY}
 APP_NAME=${NAMESPACE}
+kubectl get ns ${NAMESPACE} || kubectl create ns ${NAMESPACE}
 kapp deploy -c \
   --app ${APP_NAME} \
   --namespace ${NAMESPACE} \
