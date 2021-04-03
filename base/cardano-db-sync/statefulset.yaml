@@ -17,39 +17,6 @@ spec:
       labels:
         io.kompose.service: cardano-db-sync
     spec:
-      initContainers:
-      - name: create-ro-user
-        command: ["bash", "-c", "PGPASSWORD=${POSTGRES_PASSWORD} psql -U ${POSTGRES_USER} -h ${POSTGRES_HOST} -f /configmap/fixme.sql"]
-        image: bitnami/postgresql-repmgr:11.9.0-debian-10-r10
-        volumeMounts:
-        - name: common-env
-          mountPath: /configmap
-        env:
-        - name: POSTGRES_HOST
-          valueFrom:
-            configMapKeyRef:
-              name: common-env
-              key: POSTGRES_HOST_RW
-        - name: POSTGRES_PORT
-          valueFrom:
-            configMapKeyRef:
-              name: common-env
-              key: POSTGRES_PORT
-        - name: POSTGRES_DB
-          valueFrom:
-            configMapKeyRef:
-              name: common-env
-              key: POSTGRES_DB
-        - name: POSTGRES_USER
-          valueFrom:
-            configMapKeyRef:
-              name: common-env
-              key: POSTGRES_USER
-        - name: POSTGRES_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: init0-postgresql-ha-postgresql
-              key: postgresql-password
       containers:
       - name: cardano-db-sync
         env:

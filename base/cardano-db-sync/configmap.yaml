@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cardano-db-sync-configmap
+data:
+  create-db-ro-user-entrypoint: |
+    export PGPASSWORD=${POSTGRES_PASSWORD}
+    while [ -z "$(psql -U ${POSTGRES_USER} -h ${POSTGRES_HOST} -c '\dt' ${POSTGRES_DB} | grep epoch)" ]
+    do
+      sleep 1
+    done
+    psql -U ${POSTGRES_USER} -h ${POSTGRES_HOST} -f /configmap/fixme.sql ${POSTGRES_DB}
+  fixme.sql: |
+    CREATE ROLE postgrest_ro;
+    GRANT CONNECT ON DATABASE cdbs TO postgrest_ro;
+    GRANT SELECT ON ALL TABLES IN SCHEMA public TO postgrest_ro;
+    GRANT USAGE ON SCHEMA public TO postgrest_ro;
+    ALTER ROLE postgrest_ro WITH login;
+    ALTER USER postgrest_ro WITH PASSWORD 'CHANGEME';
+    GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA PUBLIC TO postgrest_ro;

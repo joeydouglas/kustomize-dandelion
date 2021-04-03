@@ -1,0 +1,48 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: create-db-ro-user
+spec:
+  backoffLimit: 5
+  activeDeadlineSeconds: 600
+  ttlSecondsAfterFinished: 600
+  template:
+    spec:
+      containers:
+      - name: create-db-ro-user
+        command: ["bash", "/configmap/create-db-ro-user-entrypoint"]
+        image: bitnami/postgresql-repmgr:11.9.0-debian-10-r10
+        volumeMounts:
+        - name: cardano-db-sync-configmap
+          mountPath: /configmap
+        env:
+        - name: POSTGRES_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: common-env
+              key: POSTGRES_HOST_RW
+        - name: POSTGRES_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: common-env
+              key: POSTGRES_PORT
+        - name: POSTGRES_DB
+          valueFrom:
+            configMapKeyRef:
+              name: common-env
+              key: POSTGRES_DB
+        - name: POSTGRES_USER
+          valueFrom:
+            configMapKeyRef:
+              name: common-env
+              key: POSTGRES_USER
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: init0-postgresql-ha-postgresql
+              key: postgresql-password
+      restartPolicy: Never
+      volumes:
+      - name: cardano-db-sync-configmap
+        configMap:
+          name: cardano-db-sync-configmap
