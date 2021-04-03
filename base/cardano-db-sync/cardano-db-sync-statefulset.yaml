@@ -82,7 +82,7 @@ spec:
             secretKeyRef:
               name: init0-postgresql-ha-postgresql
               key: postgresql-password
-        image: repsistance/cardano-db-sync:8.0.0
+        image: repsistance/cardano-db-sync:9.0.0
         #command: ["sh", "-c", "while true; do sleep 6969; done"]
         imagePullPolicy: IfNotPresent
         resources: {}

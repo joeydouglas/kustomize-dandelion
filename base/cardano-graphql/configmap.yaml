@@ -6,11 +6,6 @@ data:
   initContainer-entrypoint: |
     rm -rf /config/lost+found
 
-    if [ ! -e /config/genesis-shelley.json ]
-    then
-      cp /opt/cardano/cnode/files/genesis.json /config/genesis-shelley.json
-    fi
-    if [ ! -e /config/genesis-byron.json ]
-    then
-      cp /opt/cardano/cnode/files/byron-genesis.json /config/genesis-byron.json
-    fi
+    cp /opt/cardano/cnode/files/config.json /config/cardano-node-config.json
+    cp /opt/cardano/cnode/files/genesis.json /config/genesis-shelley.json
+    cp /opt/cardano/cnode/files/byron-genesis.json /config/genesis-byron.json

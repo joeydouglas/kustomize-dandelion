@@ -1,7 +1,7 @@
 apiVersion: builtin
 kind: HelmChartInflationGenerator
 metadata:
-  name: notImportantHere
+  name: postgresql-ha
 chartHome: ./base/helm-charts
 chartName: postgresql-ha
 releaseName: init0
