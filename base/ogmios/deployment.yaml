@@ -28,7 +28,7 @@ spec:
         - name: LOG_LEVEL
           value: "Debug"
         command: ["sh", "-c", "ogmios --node-socket ${NODE_SOCKET_PATH} --host ${LISTEN_HOST} --port ${LISTEN_PORT} --log-level ${LOG_LEVEL}"]
-        image: ktorz/ogmios:v3.0.0
+        image: ktorz/ogmios:v3.1.0
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 1337
