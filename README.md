@@ -26,6 +26,7 @@ kubectl get pods -A
 OVERLAY=testnet
 OUTPUT_FILE=overlays/${OVERLAY}/output.yaml # this will contain the whole deploy manifest
 kustomize build \
+  --enable-helm \
   overlays/${OVERLAY} > overlays/${OVERLAY}/output.yaml
 ```
 
