@@ -17,7 +17,7 @@ spec:
       initContainers:
       - name: configure
         command: ["bash", "/configmap/initContainer-entrypoint"]
-        image: repsistance/cardano-node:iohk-mn-passive-1.26.1-0
+        image: repsistance/cardano-node:iohk-mn-passive-1.26.2-0
         imagePullPolicy: IfNotPresent
         volumeMounts:
         - name: cardano-graphql-config
