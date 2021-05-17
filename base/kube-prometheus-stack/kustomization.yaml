@@ -1,0 +1,6 @@
+namespace: default
+generators:
+# - kube-prometheus-stack.yaml
+resources:
+- kube-prometheus-stack.yaml
+- grafana-datasource-loki.yaml
