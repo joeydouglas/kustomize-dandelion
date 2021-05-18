@@ -1,11 +1,5 @@
 namespace: monitoring
-commonLabels:
-  environment: production
-  cardano_network: testnet
-  cardano_node_type: haskell
-  project_name: dandelion
-commonAnnotations:
-  note: free-apis!
 bases:
 - ../../../base/kube-prometheus-stack
+# - ../../../base/loki-stack
 - ../../../base/loki

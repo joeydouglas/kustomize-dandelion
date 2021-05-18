@@ -1,3 +1,2 @@
-namespace: default
 resources:
 - loki.yaml
