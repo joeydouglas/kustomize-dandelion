@@ -3,3 +3,5 @@ generators:
 resources:
 - kube-prometheus-stack.yaml
 - grafana-datasource-loki.yaml
+- traefik-servicemonitor.yaml
+- traefik-dashboard.yaml

@@ -10,14 +10,18 @@
 - ` helm template loki grafana/loki --include-crds --namespace monitoring > ../../../base/loki/loki.yaml`
 
 ## Adding Datasources to Grafana
-- Create a ConfigMap for the datasource similar to [grafana-datasource-loki](../../../base/kube-prometheus-stack/grafana-datasource-loki.yaml)
+- Create a ConfigMap for the datasource similar to [grafana-datasource-loki](../../../base/kube-prometheus-stack/grafana-datasource-loki.yaml).
 - The label 'grafana_datasource: "1"' is required to trigger the grafana-sc-datasource initContainer to add the datasource. Restarting the grafana pod is required for newly added datasources.
+
+## Adding Dashboards to Grafana
+- Create a ConfigMap for the dashboard similar to [traefik-dashboard](../../../base/kube-prometheus-stac/traefik-dashboard.yaml).
+- Grafana should load the dashboard automatically without restarting the pod.
 
 TODO:
 - Setup Promtail.
-- Add Loki and Traefik dashboards to Grafana and provide documentation.
+- Add Loki ~~and Traefik~~ dashboards to Grafana ~~and provide documentation~~.
 - Setup and use persistent storage.
 - Create mainnet overlay.
-- Ingress/Endpoints for Grafana.
+- ~~Ingress/Endpoints for Grafana.~~
 - Configure alerting.
 - Setup Dandelion specific alerting rules.
