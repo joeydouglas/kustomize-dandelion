@@ -23,8 +23,8 @@
   `helm template loki-stack grafana/loki-stack  --set grafana.enabled=false,prometheus.enabled=false,prometheus.alertmanager.persistentVolume.enabled=false,prometheus.server.persistentVolume.enabled=false > ../../../base/loki-stack/loki-stack.yaml`
 
 ## Notes:
-1. This has been configured and tested for k3s.
-2. Monitoring for kube-controller-manager, kube-scheduler and etcd have been disabled.
+1. Monitoring has been configured and tested for K3D based off of this [K3S Monitoring](https://github.com/cablespaghetti/k3s-monitoring) guide.
+2. Monitoring for [kube-controller-manager, kube-scheduler](https://github.com/cablespaghetti/k3s-monitoring/issues/2) and [etcd](https://github.com/cablespaghetti/k3s-monitoring/issues/4) have been disabled.
 
   
 ### TODO:
