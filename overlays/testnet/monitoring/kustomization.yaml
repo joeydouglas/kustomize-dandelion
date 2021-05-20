@@ -1,7 +1,7 @@
 namespace: monitoring
 bases:
 - ../../../base/kube-prometheus-stack
-# - ../../../base/loki-stack
-- ../../../base/loki
+- ../../../base/loki-stack
+# - ../../../base/loki
 resources:
 - resources/ingress.yaml
